@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">AppCenterTest</string>
+    <string name="tap_me">Tap me</string>
+    <string name="crash">crash</string>
+</resources>
