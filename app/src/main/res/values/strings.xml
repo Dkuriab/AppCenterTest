@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">AppCenterTest</string>
     <string name="tap_me">Tap me</string>
-    <string name="crash">crash</string>
+    <string name="crash">Break the app</string>
+    <string name="trackable_click">Trackable click</string>
+    <string name="throw_exception">Throw exception</string>
 </resources>
