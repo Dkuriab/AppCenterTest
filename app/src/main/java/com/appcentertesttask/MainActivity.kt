@@ -17,12 +17,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
         AppCenter.start(
-                application,
-                "41912893-03be-4eec-bea2-32fcf44eca4d",
-                Analytics::class.java,
-                Crashes::class.java,
-                Distribute::class.java
+            application,
+            "41912893-03be-4eec-bea2-32fcf44eca4d",
+            Analytics::class.java,
+            Crashes::class.java,
+            Distribute::class.java
         )
 
         checkableButton = findViewById(R.id.checkable_button)
