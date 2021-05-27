@@ -7,9 +7,7 @@ import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
 import com.microsoft.appcenter.distribute.Distribute
-import java.lang.Exception
 import java.lang.NullPointerException
-import java.sql.Time
 import java.util.*
 
 @Suppress("DIVISION_BY_ZERO")

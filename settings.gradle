@@ -1,2 +1,6 @@
+include ':appcenter-distribute-release'
+include ':appcenter-crashes-release'
+include ':appcenter-analytics-release'
+include ':appcenter-release'
 include ':app'
 rootProject.name = "AppCenterTest"

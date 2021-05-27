@@ -43,18 +43,15 @@ android {
 }
 
 dependencies {
-    def appCenterSdkVersion = '4.1.0'
-
-    appCenterImplementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
-    googlePlayImplementation "com.microsoft.appcenter:appcenter-distribute-play:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-analytics:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-crashes:${appCenterSdkVersion}"
-    implementation "com.microsoft.appcenter:appcenter-distribute:${appCenterSdkVersion}"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.5.0'
     implementation 'androidx.appcompat:appcompat:1.3.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation project(path: ':appcenter-release')
+    implementation project(path: ':appcenter-crashes-release')
+    implementation project(path: ':appcenter-distribute-release')
+    implementation project(path: ':appcenter-analytics-release')
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
