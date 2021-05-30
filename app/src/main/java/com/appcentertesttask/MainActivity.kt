@@ -3,6 +3,7 @@ package com.appcentertesttask
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import androidx.annotation.MainThread
 import com.microsoft.appcenter.AppCenter
 import com.microsoft.appcenter.analytics.Analytics
 import com.microsoft.appcenter.crashes.Crashes
@@ -12,17 +13,17 @@ import java.util.*
 
 @Suppress("DIVISION_BY_ZERO")
 class MainActivity : AppCompatActivity() {
-    private lateinit var throwExceptionButton: Button
-    private lateinit var checkableButton: Button
-    private lateinit var crashButton: Button
+    private lateinit var trackEventButton: Button
+    private lateinit var trackErrorButton: Button
+    private lateinit var crashTheAppButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        throwExceptionButton = findViewById(R.id.throw_exception_button)
-        checkableButton = findViewById(R.id.trackable_button)
-        crashButton = findViewById(R.id.crash_button)
+        trackEventButton = findViewById(R.id.track_event_button)
+        trackErrorButton = findViewById(R.id.track_error_button)
+        crashTheAppButton = findViewById(R.id.crash_the_app_button)
 
         AppCenter.start(
             application,
@@ -35,24 +36,27 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setButtonListeners() {
-        checkableButton.setOnClickListener {
+        trackEventButton.setOnClickListener {
             Analytics.trackEvent(
-                "Trackable button pressed",
+                "\"TrackEvent\" button pressed",
                 mapOf(
                     "DisplayLanguage" to Locale.getDefault().displayLanguage,
                     "CurrentTime" to Calendar.getInstance().time.toString()
                 )
             )
         }
-        crashButton.setOnClickListener {
-            Analytics.trackEvent("\"Break the app\" button pressed")
+        crashTheAppButton.setOnClickListener {
+            suspend {
+                Analytics.trackEvent("\"CrashTheApp\" button pressed")
+            }
 //            Crashes.generateTestCrash()
             1 / 0 /* throws ArithmeticalException */
         }
-        throwExceptionButton.setOnClickListener {
+        trackErrorButton.setOnClickListener {
             try {
-                throw NullPointerException("Test exception")
+                throw NullPointerException("Test exception for TrackErrorButton")
             } catch (e: NullPointerException) {
+                Analytics.trackEvent("\"TrackError\" button pressed")
                 Crashes.trackError(e)
             }
         }
